@@ -12,10 +12,15 @@ namespace BulkMail.xml
         public List<String> EmailList { get; set; }
         public object[] Email { get; set;  }
         public List<String> PiecesJointes { get; set; }
+        public bool isLoaded { get; set; }
+        public String Filepath { get; set; }
 
-        public XMLState()
+        public XMLState(bool isLoaded)
         {
+            this.isLoaded = isLoaded;
             Email = new object[3];
+            EmailList = new List<string>();
+            PiecesJointes = new List<string>();
         }
 
         protected void EscapeStrings()

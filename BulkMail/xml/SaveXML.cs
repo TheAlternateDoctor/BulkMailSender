@@ -31,9 +31,11 @@ namespace BulkMail.xml
             XElement PiecesJointes = new XElement("piecesJointes",Data.PiecesJointes);
             XElement Email = new XElement("email", Objet, Expediteur, Corps, PiecesJointes);
 
+            //Mise en place complète du XML
             XElement Root = new XElement("campagne", Nom, MailList, Email);
             XMLFile = new XDocument(Root);
 
+            //On valide le schéma (normalement pas nécessaire, mais sait-on jamais)
             bool errors = false;
             XMLFile.Validate(schema,(o,e) =>
             {

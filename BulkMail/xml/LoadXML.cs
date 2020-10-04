@@ -10,7 +10,7 @@ namespace BulkMail.xml
     {
         static XMLState loadFile()
         {
-            XMLState data = new XMLState();
+            XMLState data = new XMLState(true);
 
             return data;
         }

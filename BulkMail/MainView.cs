@@ -28,20 +28,31 @@ namespace BulkMail
             addForm.ShowDialog();
             
             sauvegarderToolStripMenuItem.Enabled = true;
+            sauvegarderSousToolStripMenuItem.Enabled = true;
         }
         private void addForm_FormClosed(object subSender, FormClosedEventArgs subE)
         {
             Console.WriteLine("Event triggered");
             if (!((CampagneAdd)subSender).CampagneName.Equals("") && ((CampagneAdd)subSender).isClosedClean)
             {
-                data = new XMLState();
+                data = new XMLState(false);
                 data.Nom = ((CampagneAdd)subSender).CampagneName;
             }
         }
 
         private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveXML.SaveFile(data,"test.xml");
+            if (!data.isLoaded)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Fichier XML (*.xml)|*.xml";
+                saveFileDialog.RestoreDirectory = true;
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    data.Filepath = saveFileDialog.InitialDirectory + saveFileDialog.FileName);
+                }
+            }
+            SaveXML.SaveFile(data, data.Filepath);
         }
     }
 }
