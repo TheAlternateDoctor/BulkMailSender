@@ -15,10 +15,13 @@ namespace BulkMail
     public partial class MainView : Form
     {
         XMLState data;
+        MailAdressList listeAdress;
         public MainView()
         {
             InitializeComponent();
             Console.WriteLine();
+            listeAdress = new MailAdressList();
+            listeAdress.Show();
         }
 
         private void addCampagne_Click(object sender, EventArgs e)
@@ -29,6 +32,7 @@ namespace BulkMail
             
             sauvegarderToolStripMenuItem.Enabled = true;
             sauvegarderSousToolStripMenuItem.Enabled = true;
+            envoisToolStripMenuItem.Enabled = true;
         }
         private void addForm_FormClosed(object subSender, FormClosedEventArgs subE)
         {
@@ -49,10 +53,25 @@ namespace BulkMail
                 saveFileDialog.RestoreDirectory = true;
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    data.Filepath = saveFileDialog.InitialDirectory + saveFileDialog.FileName);
+                    data.Filepath = saveFileDialog.FileName;
                 }
             }
             SaveXML.SaveFile(data, data.Filepath);
+        }
+
+        private void addAdressFileButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openAdressFile = new OpenFileDialog();
+            openAdressFile.Filter = "Fichier TXT (*.txt)|*.txt|Fichier CSV (*.csv)|*.csv";
+            if(openAdressFile.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(openAdressFile.FileName);
+            }
+        }
+
+        private void afficherLaListeDadresseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listeAdress.Show();
         }
     }
 }
