@@ -75,5 +75,23 @@ namespace BulkMail
                 File.WriteAllLines(exportFile.FileName, Adresses);
             }
         }
+
+        private void remove_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in ListAdresses.SelectedItems)
+            {
+                Adresses.Remove(item.Text);
+                ListAdresses.Items.Remove(item);
+            }
+        }
+
+        private void MailAdressList_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
+        }
     }
 }

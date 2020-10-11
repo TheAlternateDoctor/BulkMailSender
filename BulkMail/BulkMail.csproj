@@ -46,6 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileUtils.cs" />
+    <Compile Include="MailAdressList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MailAdressList.Designer.cs">
+      <DependentUpon>MailAdressList.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +72,9 @@
     <Compile Include="xml\XMLState.cs" />
     <EmbeddedResource Include="CampagneAdd.resx">
       <DependentUpon>CampagneAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MailAdressList.resx">
+      <DependentUpon>MailAdressList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>

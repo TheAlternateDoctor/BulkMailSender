@@ -33,6 +33,7 @@
             this.AddAdress = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ListAdresses
@@ -43,7 +44,7 @@
             this.ListAdresses.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.ListAdresses.LabelEdit = true;
             this.ListAdresses.Location = new System.Drawing.Point(9, 48);
-            this.ListAdresses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ListAdresses.Margin = new System.Windows.Forms.Padding(2);
             this.ListAdresses.Name = "ListAdresses";
             this.ListAdresses.Size = new System.Drawing.Size(583, 307);
             this.ListAdresses.TabIndex = 0;
@@ -61,7 +62,7 @@
             // AddAdress
             // 
             this.AddAdress.Location = new System.Drawing.Point(9, 10);
-            this.AddAdress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddAdress.Margin = new System.Windows.Forms.Padding(2);
             this.AddAdress.Name = "AddAdress";
             this.AddAdress.Size = new System.Drawing.Size(104, 34);
             this.AddAdress.TabIndex = 1;
@@ -72,7 +73,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(117, 10);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 34);
             this.button2.TabIndex = 2;
@@ -82,8 +83,8 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(229, 10);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Location = new System.Drawing.Point(228, 10);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 34);
             this.button3.TabIndex = 3;
@@ -91,18 +92,30 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.exporter);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(289, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 34);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Supprimer";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.remove_Click);
+            // 
             // MailAdressList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.AddAdress);
             this.Controls.Add(this.ListAdresses);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MailAdressList";
             this.Text = "MailAdressList";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MailAdressList_FormClosing);
             this.ResumeLayout(false);
 
         }
@@ -114,5 +127,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ColumnHeader Adresse;
+        private System.Windows.Forms.Button button1;
     }
 }

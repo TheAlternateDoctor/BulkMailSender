@@ -21,7 +21,6 @@ namespace BulkMail
             InitializeComponent();
             Console.WriteLine();
             listeAdress = new MailAdressList();
-            listeAdress.Show();
         }
 
         private void addCampagne_Click(object sender, EventArgs e)
