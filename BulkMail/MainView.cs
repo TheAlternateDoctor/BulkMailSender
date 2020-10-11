@@ -16,6 +16,7 @@ namespace BulkMail
     {
         XMLState data;
         MailAdressList listeAdress;
+        List<String> PiecesJointes = new List<string>();
         public MainView()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace BulkMail
             CampagneAdd addForm = new CampagneAdd();
             addForm.FormClosed += new FormClosedEventHandler(addForm_FormClosed);
             addForm.ShowDialog();
-            
+
             sauvegarderToolStripMenuItem.Enabled = true;
             sauvegarderSousToolStripMenuItem.Enabled = true;
             envoisToolStripMenuItem.Enabled = true;
@@ -62,7 +63,7 @@ namespace BulkMail
         {
             OpenFileDialog openAdressFile = new OpenFileDialog();
             openAdressFile.Filter = "Fichier TXT (*.txt)|*.txt|Fichier CSV (*.csv)|*.csv";
-            if(openAdressFile.ShowDialog() == DialogResult.OK)
+            if (openAdressFile.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show(openAdressFile.FileName);
             }
@@ -71,6 +72,41 @@ namespace BulkMail
         private void afficherLaListeDadresseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             listeAdress.Show();
+        }
+
+        private void mailAttachmentsAdd_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog newPJ = new OpenFileDialog();
+            if(newPJ.ShowDialog() == DialogResult.OK)
+            {
+                PiecesJointes.Add(newPJ.FileName);
+                UpdatePiecesJointes();
+            }
+        }
+
+        private void UpdatePiecesJointes()
+        {
+            String totalPJ = "";
+            foreach (String pieceJointe in PiecesJointes)
+            {
+                String file = pieceJointe.Substring(pieceJointe.LastIndexOf(@"\")+1);
+                if (PiecesJointes.IndexOf(pieceJointe) == PiecesJointes.Count-1)
+                    totalPJ += file;
+                else
+                    totalPJ += file + ", ";
+            }
+            mailAttachmentsList.Text = totalPJ;
+        }
+
+        private void mailAttachmentsList_Click(object sender, EventArgs e)
+        {
+            String totalPJ = "";
+            foreach (String pieceJointe in PiecesJointes)
+            {
+                String file = pieceJointe.Substring(pieceJointe.LastIndexOf(@"\") + 1);
+                    totalPJ += file+"\n";
+            }
+            MessageBox.Show(totalPJ);
         }
     }
 }

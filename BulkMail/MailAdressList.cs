@@ -54,7 +54,7 @@ namespace BulkMail
         {
             string newaddress = e.Label;
             int index = ListAdresses.Items.IndexOf(ListAdresses.SelectedItems[0]);
-            Adresses[index] = newaddress;
+            Adresses.Add(newaddress);
         }
 
         private void removeDoubles(object sender, EventArgs e)

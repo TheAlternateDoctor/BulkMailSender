@@ -45,6 +45,16 @@
             this.exporterLaListeDadressesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.paramètresSMTPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mailContent = new System.Windows.Forms.RichTextBox();
+            this.send = new System.Windows.Forms.Button();
+            this.mailSender = new System.Windows.Forms.TextBox();
+            this.mailObject = new System.Windows.Forms.TextBox();
+            this.mailSenderLabel = new System.Windows.Forms.Label();
+            this.mailObjectLabel = new System.Windows.Forms.Label();
+            this.mailContentLabel = new System.Windows.Forms.Label();
+            this.mail = new System.Windows.Forms.Label();
+            this.mailAttachmentsList = new System.Windows.Forms.Label();
+            this.mailAttachmentsAdd = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,8 +65,7 @@
             this.envoisToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1067, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(562, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -180,16 +189,113 @@
             this.paramètresSMTPToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
             this.paramètresSMTPToolStripMenuItem.Text = "Paramètres SMTP";
             // 
+            // mailContent
+            // 
+            this.mailContent.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.mailContent.Location = new System.Drawing.Point(12, 130);
+            this.mailContent.Name = "mailContent";
+            this.mailContent.Size = new System.Drawing.Size(538, 256);
+            this.mailContent.TabIndex = 1;
+            this.mailContent.Text = "";
+            // 
+            // send
+            // 
+            this.send.Location = new System.Drawing.Point(12, 392);
+            this.send.Name = "send";
+            this.send.Size = new System.Drawing.Size(95, 46);
+            this.send.TabIndex = 2;
+            this.send.Text = "Envoyer";
+            this.send.UseVisualStyleBackColor = true;
+            // 
+            // mailSender
+            // 
+            this.mailSender.Location = new System.Drawing.Point(12, 52);
+            this.mailSender.Name = "mailSender";
+            this.mailSender.Size = new System.Drawing.Size(251, 20);
+            this.mailSender.TabIndex = 3;
+            // 
+            // mailObject
+            // 
+            this.mailObject.Location = new System.Drawing.Point(12, 91);
+            this.mailObject.Name = "mailObject";
+            this.mailObject.Size = new System.Drawing.Size(538, 20);
+            this.mailObject.TabIndex = 4;
+            // 
+            // mailSenderLabel
+            // 
+            this.mailSenderLabel.AutoSize = true;
+            this.mailSenderLabel.Location = new System.Drawing.Point(12, 36);
+            this.mailSenderLabel.Name = "mailSenderLabel";
+            this.mailSenderLabel.Size = new System.Drawing.Size(60, 13);
+            this.mailSenderLabel.TabIndex = 5;
+            this.mailSenderLabel.Text = "Expéditeur:";
+            // 
+            // mailObjectLabel
+            // 
+            this.mailObjectLabel.AutoSize = true;
+            this.mailObjectLabel.Location = new System.Drawing.Point(12, 75);
+            this.mailObjectLabel.Name = "mailObjectLabel";
+            this.mailObjectLabel.Size = new System.Drawing.Size(35, 13);
+            this.mailObjectLabel.TabIndex = 6;
+            this.mailObjectLabel.Text = "Objet:";
+            // 
+            // mailContentLabel
+            // 
+            this.mailContentLabel.AutoSize = true;
+            this.mailContentLabel.Location = new System.Drawing.Point(12, 114);
+            this.mailContentLabel.Name = "mailContentLabel";
+            this.mailContentLabel.Size = new System.Drawing.Size(86, 13);
+            this.mailContentLabel.TabIndex = 7;
+            this.mailContentLabel.Text = "Contenu du mail:";
+            // 
+            // mail
+            // 
+            this.mail.AutoSize = true;
+            this.mail.Location = new System.Drawing.Point(270, 36);
+            this.mail.Name = "mail";
+            this.mail.Size = new System.Drawing.Size(78, 13);
+            this.mail.TabIndex = 8;
+            this.mail.Text = "Pièces Jointes:";
+            // 
+            // mailAttachmentsList
+            // 
+            this.mailAttachmentsList.AutoEllipsis = true;
+            this.mailAttachmentsList.Location = new System.Drawing.Point(269, 56);
+            this.mailAttachmentsList.Name = "mailAttachmentsList";
+            this.mailAttachmentsList.Size = new System.Drawing.Size(281, 20);
+            this.mailAttachmentsList.TabIndex = 9;
+            this.mailAttachmentsList.Text = "Aucune pièce jointe";
+            this.mailAttachmentsList.DoubleClick += new System.EventHandler(this.mailAttachmentsList_Click);
+            // 
+            // mailAttachmentsAdd
+            // 
+            this.mailAttachmentsAdd.Location = new System.Drawing.Point(528, 31);
+            this.mailAttachmentsAdd.Name = "mailAttachmentsAdd";
+            this.mailAttachmentsAdd.Size = new System.Drawing.Size(22, 23);
+            this.mailAttachmentsAdd.TabIndex = 10;
+            this.mailAttachmentsAdd.Text = "+";
+            this.mailAttachmentsAdd.UseVisualStyleBackColor = true;
+            this.mailAttachmentsAdd.Click += new System.EventHandler(this.mailAttachmentsAdd_Click);
+            // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(562, 450);
+            this.Controls.Add(this.mailAttachmentsAdd);
+            this.Controls.Add(this.mailAttachmentsList);
+            this.Controls.Add(this.mail);
+            this.Controls.Add(this.mailContentLabel);
+            this.Controls.Add(this.mailObjectLabel);
+            this.Controls.Add(this.mailSenderLabel);
+            this.Controls.Add(this.mailObject);
+            this.Controls.Add(this.mailSender);
+            this.Controls.Add(this.send);
+            this.Controls.Add(this.mailContent);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MainView";
-            this.Text = "Form1";
+            this.Text = "BulkMail";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -216,6 +322,16 @@
         private System.Windows.Forms.ToolStripMenuItem autonettoyageDesDoublonsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exporterLaListeDadressesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadRecent;
+        private System.Windows.Forms.RichTextBox mailContent;
+        private System.Windows.Forms.Button send;
+        private System.Windows.Forms.TextBox mailSender;
+        private System.Windows.Forms.TextBox mailObject;
+        private System.Windows.Forms.Label mailSenderLabel;
+        private System.Windows.Forms.Label mailObjectLabel;
+        private System.Windows.Forms.Label mailContentLabel;
+        private System.Windows.Forms.Label mail;
+        private System.Windows.Forms.Label mailAttachmentsList;
+        private System.Windows.Forms.Button mailAttachmentsAdd;
     }
 }
 
