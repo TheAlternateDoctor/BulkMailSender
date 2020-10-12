@@ -30,7 +30,7 @@ namespace BulkMail
             ListViewItem newAddresse = new ListViewItem("");
             ListAdresses.Items.Add(newAddresse);
             ListAdresses.SelectedIndices.Clear();
-            ListAdresses.Items[ListAdresses.Items.Count-1].BeginEdit();
+            ListAdresses.Items[ListAdresses.Items.Count - 1].BeginEdit();
         }
 
         private void ListAdresses_DoubleClick(object sender, EventArgs e)

@@ -77,9 +77,13 @@ namespace BulkMail
         private void mailAttachmentsAdd_Click(object sender, EventArgs e)
         {
             OpenFileDialog newPJ = new OpenFileDialog();
+            newPJ.Multiselect = true;
             if(newPJ.ShowDialog() == DialogResult.OK)
             {
-                PiecesJointes.Add(newPJ.FileName);
+                foreach (String item in newPJ.FileNames)
+                {
+                    PiecesJointes.Add(item);
+                }
                 UpdatePiecesJointes();
             }
         }
@@ -87,26 +91,39 @@ namespace BulkMail
         private void UpdatePiecesJointes()
         {
             String totalPJ = "";
-            foreach (String pieceJointe in PiecesJointes)
+            if (PiecesJointes.Count != 0)
             {
-                String file = pieceJointe.Substring(pieceJointe.LastIndexOf(@"\")+1);
-                if (PiecesJointes.IndexOf(pieceJointe) == PiecesJointes.Count-1)
-                    totalPJ += file;
-                else
-                    totalPJ += file + ", ";
+                foreach (String pieceJointe in PiecesJointes)
+                {
+                    String file = pieceJointe.Substring(pieceJointe.LastIndexOf(@"\") + 1);
+                    if (PiecesJointes.IndexOf(pieceJointe) == PiecesJointes.Count - 1)
+                        totalPJ += file;
+                    else
+                        totalPJ += file + ", ";
+                }
+                mailAttachmentsList.Text = totalPJ;
             }
-            mailAttachmentsList.Text = totalPJ;
+            else
+                mailAttachmentsList.Text = "Aucune pièce jointe";
         }
 
         private void mailAttachmentsList_Click(object sender, EventArgs e)
         {
-            String totalPJ = "";
+            List<String> totalPJ = new List<string>();
             foreach (String pieceJointe in PiecesJointes)
             {
                 String file = pieceJointe.Substring(pieceJointe.LastIndexOf(@"\") + 1);
-                    totalPJ += file+"\n";
+                totalPJ.Add(file);
             }
-            MessageBox.Show(totalPJ);
+            PiecesJointesView PJView = new PiecesJointesView(totalPJ);
+            if(PJView.ShowDialog() == DialogResult.Cancel){
+                List<int> removedPiecesJointes = PJView.getIndexesRemoved();
+                foreach (int item in removedPiecesJointes)
+                {
+                    PiecesJointes.RemoveAt(item);
+                }
+                UpdatePiecesJointes();
+            }
         }
     }
 }
