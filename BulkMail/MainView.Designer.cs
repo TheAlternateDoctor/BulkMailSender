@@ -56,6 +56,7 @@
             this.mailAttachmentsList = new System.Windows.Forms.Label();
             this.mailAttachmentsAdd = new System.Windows.Forms.Button();
             this.openAttachments = new System.Windows.Forms.Button();
+            this.noToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,9 +101,13 @@
             this.chargerUneCampagneToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.chargerUneCampagneToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.chargerUneCampagneToolStripMenuItem.Text = "Charger une campagne";
+            this.chargerUneCampagneToolStripMenuItem.Click += new System.EventHandler(this.chargerUneCampagneToolStripMenuItem_Click);
             // 
             // loadRecent
             // 
+            this.loadRecent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noToolStripMenuItem});
+            this.loadRecent.Enabled = false;
             this.loadRecent.Name = "loadRecent";
             this.loadRecent.Size = new System.Drawing.Size(249, 22);
             this.loadRecent.Text = "Charger une campagne récente...";
@@ -294,6 +299,12 @@
             this.openAttachments.UseVisualStyleBackColor = true;
             this.openAttachments.Click += new System.EventHandler(this.openAttachments_Click);
             // 
+            // noToolStripMenuItem
+            // 
+            this.noToolStripMenuItem.Name = "noToolStripMenuItem";
+            this.noToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noToolStripMenuItem.Text = "No";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,6 +362,7 @@
         private System.Windows.Forms.Label mailAttachmentsList;
         private System.Windows.Forms.Button mailAttachmentsAdd;
         private System.Windows.Forms.Button openAttachments;
+        private System.Windows.Forms.ToolStripMenuItem noToolStripMenuItem;
     }
 }
 

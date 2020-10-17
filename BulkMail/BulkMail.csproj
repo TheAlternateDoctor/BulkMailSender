@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -47,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IdataDAO.cs" />
     <Compile Include="MailAdressList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,10 +82,9 @@
     <Compile Include="SMTPsettings.Designer.cs">
       <DependentUpon>SMTPsettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="xml\FileUtils.cs" />
-    <Compile Include="xml\LoadXML.cs" />
-    <Compile Include="xml\SaveXML.cs" />
-    <Compile Include="xml\MailData.cs" />
+    <Compile Include="Data\FileUtils.cs" />
+    <Compile Include="Data\DataDAO.cs" />
+    <Compile Include="Data\MailData.cs" />
     <EmbeddedResource Include="CampagneAdd.resx">
       <DependentUpon>CampagneAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +106,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SMTPsettings.resx">
+      <DependentUpon>SMTPsettings.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\DataSources\BulkMail.xml.XMLState.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -114,7 +119,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="xml\BulkMail.xsd">
+    <None Include="Data\BulkMail.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

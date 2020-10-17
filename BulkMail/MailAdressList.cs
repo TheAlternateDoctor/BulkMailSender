@@ -1,4 +1,4 @@
-﻿using BulkMail.xml;
+﻿using BulkMail.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

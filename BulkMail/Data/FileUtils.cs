@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BulkMail.xml
+namespace BulkMail.Data
 {
     public static class FileUtils
     {
@@ -52,7 +52,7 @@ namespace BulkMail.xml
                     return adresses;
                 }
             }
-            return new List<string>();
+            return adresses;
         }
     }
 }

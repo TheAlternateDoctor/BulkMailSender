@@ -16,5 +16,22 @@ namespace BulkMail
         {
             InitializeComponent();
         }
+
+        public String getServer()
+        {
+            return serverName.Text;
+        }
+        public int getPort()
+        {
+            return int.Parse(portNumber.Text);
+        }
+        public String getUsername()
+        {
+            return serverName.Text;
+        }
+        public String getPassword()
+        {
+            return serverName.Text;
+        }
     }
 }

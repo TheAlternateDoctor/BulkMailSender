@@ -1,4 +1,4 @@
-﻿using BulkMail.xml;
+﻿using BulkMail.Data;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +17,21 @@ namespace BulkMail
         MailData data;
         MailAdressList listeAdress;
         List<String> PiecesJointes = new List<string>();
+        DataDAO dataDAO = new DataDAO();
         public MainView()
         {
             InitializeComponent();
             Console.WriteLine();
             listeAdress = new MailAdressList();
+        }
+
+        private void UpdateFields()
+        {
+            mailSender.Text = (String)data.Email[1];
+            mailObject.Text = (String)data.Email[0];
+            mailContent.Text = (String)data.Email[2];
+            PiecesJointes = data.PiecesJointes;
+            UpdatePiecesJointes();
         }
 
         private void addCampagne_Click(object sender, EventArgs e)
@@ -56,7 +66,7 @@ namespace BulkMail
                     data.Filepath = saveFileDialog.FileName;
                 }
             }
-            SaveXML.SaveFile(data, data.Filepath);
+            dataDAO.saveData(data, data.Filepath);
         }
 
         private void addAdressFileButton_Click(object sender, EventArgs e)
@@ -130,7 +140,11 @@ namespace BulkMail
 
         private void SMTPitem_Click(object sender, EventArgs e)
         {
+            SMTPsettings settings = new SMTPsettings();
+            if(settings.ShowDialog() == DialogResult.OK)
+            {
 
+            }
         }
 
         private void openAttachments_Click(object sender, EventArgs e)
@@ -150,6 +164,20 @@ namespace BulkMail
                     PiecesJointes.RemoveAt(item);
                 }
                 UpdatePiecesJointes();
+            }
+        }
+
+        private void chargerUneCampagneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openXML = new OpenFileDialog();
+            openXML.Filter = "Fichier XML (*.xml)|*.xml";
+            if(openXML.ShowDialog() == DialogResult.OK)
+            {
+                data = dataDAO.loadData(openXML.FileName);
+                UpdateFields();
+                sauvegarderToolStripMenuItem.Enabled = true;
+                sauvegarderSousToolStripMenuItem.Enabled = true;
+                envoisToolStripMenuItem.Enabled = true;
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BulkMail.xml
+namespace BulkMail.Data
 {
     public class MailData
     {
@@ -14,6 +14,11 @@ namespace BulkMail.xml
         public List<String> PiecesJointes { get; set; }
         public bool isLoaded { get; set; }
         public String Filepath { get; set; }
+
+        public String SMTPServer { get; set; }
+        public int Port { get; set; }
+        public String Username { get; set; }
+        public String Password { get; set; }
 
         public MailData(bool isLoaded)
         {
