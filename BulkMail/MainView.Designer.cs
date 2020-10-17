@@ -44,7 +44,7 @@
             this.autonettoyageDesDoublonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exporterLaListeDadressesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.paramètresSMTPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SMTPitem = new System.Windows.Forms.ToolStripMenuItem();
             this.mailContent = new System.Windows.Forms.RichTextBox();
             this.send = new System.Windows.Forms.Button();
             this.mailSender = new System.Windows.Forms.TextBox();
@@ -55,6 +55,7 @@
             this.mail = new System.Windows.Forms.Label();
             this.mailAttachmentsList = new System.Windows.Forms.Label();
             this.mailAttachmentsAdd = new System.Windows.Forms.Button();
+            this.openAttachments = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +89,7 @@
             // 
             this.addCampagne.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.addCampagne.Name = "addCampagne";
+            this.addCampagne.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.addCampagne.Size = new System.Drawing.Size(249, 22);
             this.addCampagne.Text = "Démarrer une campagne";
             this.addCampagne.Click += new System.EventHandler(this.addCampagne_Click);
@@ -95,6 +97,7 @@
             // chargerUneCampagneToolStripMenuItem
             // 
             this.chargerUneCampagneToolStripMenuItem.Name = "chargerUneCampagneToolStripMenuItem";
+            this.chargerUneCampagneToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.chargerUneCampagneToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.chargerUneCampagneToolStripMenuItem.Text = "Charger une campagne";
             // 
@@ -146,7 +149,7 @@
             this.autonettoyageDesDoublonsToolStripMenuItem,
             this.exporterLaListeDadressesToolStripMenuItem,
             this.toolStripMenuItem3,
-            this.paramètresSMTPToolStripMenuItem});
+            this.SMTPitem});
             this.envoisToolStripMenuItem.Enabled = false;
             this.envoisToolStripMenuItem.Name = "envoisToolStripMenuItem";
             this.envoisToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
@@ -183,11 +186,12 @@
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(224, 6);
             // 
-            // paramètresSMTPToolStripMenuItem
+            // SMTPitem
             // 
-            this.paramètresSMTPToolStripMenuItem.Name = "paramètresSMTPToolStripMenuItem";
-            this.paramètresSMTPToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.paramètresSMTPToolStripMenuItem.Text = "Paramètres SMTP";
+            this.SMTPitem.Name = "SMTPitem";
+            this.SMTPitem.Size = new System.Drawing.Size(227, 22);
+            this.SMTPitem.Text = "Paramètres SMTP";
+            this.SMTPitem.Click += new System.EventHandler(this.SMTPitem_Click);
             // 
             // mailContent
             // 
@@ -206,6 +210,7 @@
             this.send.TabIndex = 2;
             this.send.Text = "Envoyer";
             this.send.UseVisualStyleBackColor = true;
+            this.send.Click += new System.EventHandler(this.send_Click);
             // 
             // mailSender
             // 
@@ -260,16 +265,18 @@
             // mailAttachmentsList
             // 
             this.mailAttachmentsList.AutoEllipsis = true;
-            this.mailAttachmentsList.Location = new System.Drawing.Point(269, 56);
+            this.mailAttachmentsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.mailAttachmentsList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.mailAttachmentsList.Location = new System.Drawing.Point(269, 52);
             this.mailAttachmentsList.Name = "mailAttachmentsList";
-            this.mailAttachmentsList.Size = new System.Drawing.Size(281, 20);
+            this.mailAttachmentsList.Size = new System.Drawing.Size(179, 20);
             this.mailAttachmentsList.TabIndex = 9;
             this.mailAttachmentsList.Text = "Aucune pièce jointe";
             this.mailAttachmentsList.DoubleClick += new System.EventHandler(this.mailAttachmentsList_Click);
             // 
             // mailAttachmentsAdd
             // 
-            this.mailAttachmentsAdd.Location = new System.Drawing.Point(528, 31);
+            this.mailAttachmentsAdd.Location = new System.Drawing.Point(528, 26);
             this.mailAttachmentsAdd.Name = "mailAttachmentsAdd";
             this.mailAttachmentsAdd.Size = new System.Drawing.Size(22, 23);
             this.mailAttachmentsAdd.TabIndex = 10;
@@ -277,11 +284,22 @@
             this.mailAttachmentsAdd.UseVisualStyleBackColor = true;
             this.mailAttachmentsAdd.Click += new System.EventHandler(this.mailAttachmentsAdd_Click);
             // 
+            // openAttachments
+            // 
+            this.openAttachments.Location = new System.Drawing.Point(454, 52);
+            this.openAttachments.Name = "openAttachments";
+            this.openAttachments.Size = new System.Drawing.Size(96, 20);
+            this.openAttachments.TabIndex = 11;
+            this.openAttachments.Text = "Ouvrir";
+            this.openAttachments.UseVisualStyleBackColor = true;
+            this.openAttachments.Click += new System.EventHandler(this.openAttachments_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 450);
+            this.Controls.Add(this.openAttachments);
             this.Controls.Add(this.mailAttachmentsAdd);
             this.Controls.Add(this.mailAttachmentsList);
             this.Controls.Add(this.mail);
@@ -316,7 +334,7 @@
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem envoisToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem paramètresSMTPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SMTPitem;
         private System.Windows.Forms.ToolStripMenuItem addAdressFileButton;
         private System.Windows.Forms.ToolStripMenuItem afficherLaListeDadresseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autonettoyageDesDoublonsToolStripMenuItem;
@@ -332,6 +350,7 @@
         private System.Windows.Forms.Label mail;
         private System.Windows.Forms.Label mailAttachmentsList;
         private System.Windows.Forms.Button mailAttachmentsAdd;
+        private System.Windows.Forms.Button openAttachments;
     }
 }
 

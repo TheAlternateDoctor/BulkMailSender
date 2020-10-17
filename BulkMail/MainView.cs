@@ -14,7 +14,7 @@ namespace BulkMail
 {
     public partial class MainView : Form
     {
-        XMLState data;
+        MailData data;
         MailAdressList listeAdress;
         List<String> PiecesJointes = new List<string>();
         public MainView()
@@ -39,7 +39,7 @@ namespace BulkMail
             Console.WriteLine("Event triggered");
             if (!((CampagneAdd)subSender).CampagneName.Equals("") && ((CampagneAdd)subSender).isClosedClean)
             {
-                data = new XMLState(false);
+                data = new MailData(false);
                 data.Nom = ((CampagneAdd)subSender).CampagneName;
             }
         }
@@ -61,12 +61,9 @@ namespace BulkMail
 
         private void addAdressFileButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openAdressFile = new OpenFileDialog();
-            openAdressFile.Filter = "Fichier TXT (*.txt)|*.txt|Fichier CSV (*.csv)|*.csv";
-            if (openAdressFile.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show(openAdressFile.FileName);
-            }
+            List<String> Adresses = FileUtils.importMailList();
+            listeAdress.AddAdressList(Adresses);
+            listeAdress.Show();
         }
 
         private void afficherLaListeDadresseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -117,6 +114,36 @@ namespace BulkMail
             }
             PiecesJointesView PJView = new PiecesJointesView(totalPJ);
             if(PJView.ShowDialog() == DialogResult.Cancel){
+                List<int> removedPiecesJointes = PJView.getIndexesRemoved();
+                foreach (int item in removedPiecesJointes)
+                {
+                    PiecesJointes.RemoveAt(item);
+                }
+                UpdatePiecesJointes();
+            }
+        }
+
+        private void send_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SMTPitem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openAttachments_Click(object sender, EventArgs e)
+        {
+            List<String> totalPJ = new List<string>();
+            foreach (String pieceJointe in PiecesJointes)
+            {
+                String file = pieceJointe.Substring(pieceJointe.LastIndexOf(@"\") + 1);
+                totalPJ.Add(file);
+            }
+            PiecesJointesView PJView = new PiecesJointesView(totalPJ);
+            if (PJView.ShowDialog() == DialogResult.Cancel)
+            {
                 List<int> removedPiecesJointes = PJView.getIndexesRemoved();
                 foreach (int item in removedPiecesJointes)
                 {

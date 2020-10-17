@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BulkMail.xml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,12 +18,15 @@ namespace BulkMail
         public MailAdressList()
         {
             InitializeComponent();
-            Adresses.Add("Test");
-            Adresses.Add("Test2");
-            Adresses.Add("Test");
-            ListAdresses.Items.Add("Test");
-            ListAdresses.Items.Add("Test2");
-            ListAdresses.Items.Add("Test");
+        }
+
+        public void AddAdressList(List<String> adresses)
+        {
+            Adresses.AddRange(adresses);
+            foreach (String adresse in adresses)
+            {
+                ListAdresses.Items.Add(adresse);
+            }
         }
 
         private void AddAdress_Click(object sender, EventArgs e)
@@ -69,11 +73,7 @@ namespace BulkMail
 
         private void exporter(object sender, EventArgs e)
         {
-            OpenFileDialog exportFile = new OpenFileDialog();
-            if(exportFile.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllLines(exportFile.FileName, Adresses);
-            }
+            FileUtils.exportMailList(Adresses);
         }
 
         private void remove_Click(object sender, EventArgs e)

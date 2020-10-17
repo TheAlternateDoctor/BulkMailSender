@@ -8,9 +8,9 @@ namespace BulkMail.xml
 {
     public class LoadXML
     {
-        static XMLState loadFile()
+        static MailData loadFile()
         {
-            XMLState data = new XMLState(true);
+            MailData data = new MailData(true);
 
             return data;
         }

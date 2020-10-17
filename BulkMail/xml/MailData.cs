@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BulkMail.xml
 {
-    public class XMLState
+    public class MailData
     {
         public String Nom{ get; set; }
         public List<String> EmailList { get; set; }
@@ -15,7 +15,7 @@ namespace BulkMail.xml
         public bool isLoaded { get; set; }
         public String Filepath { get; set; }
 
-        public XMLState(bool isLoaded)
+        public MailData(bool isLoaded)
         {
             this.isLoaded = isLoaded;
             Email = new object[3];

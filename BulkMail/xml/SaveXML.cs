@@ -14,7 +14,7 @@ namespace BulkMail.xml
     {
         public static XDocument XMLFile;
         
-        static public void SaveFile(XMLState Data, String Filepath)
+        static public void SaveFile(MailData Data, String Filepath)
         {
             //Chargement du schéma
             String Schema = File.ReadAllText("BulkMail.xsd");
