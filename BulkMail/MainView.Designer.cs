@@ -33,6 +33,7 @@
             this.addCampagne = new System.Windows.Forms.ToolStripMenuItem();
             this.chargerUneCampagneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadRecent = new System.Windows.Forms.ToolStripMenuItem();
+            this.noToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.sauvegarderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sauvegarderSousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,8 +42,6 @@
             this.envoisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addAdressFileButton = new System.Windows.Forms.ToolStripMenuItem();
             this.afficherLaListeDadresseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.autonettoyageDesDoublonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exporterLaListeDadressesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.SMTPitem = new System.Windows.Forms.ToolStripMenuItem();
             this.mailContent = new System.Windows.Forms.RichTextBox();
@@ -56,7 +55,6 @@
             this.mailAttachmentsList = new System.Windows.Forms.Label();
             this.mailAttachmentsAdd = new System.Windows.Forms.Button();
             this.openAttachments = new System.Windows.Forms.Button();
-            this.noToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,6 +110,12 @@
             this.loadRecent.Size = new System.Drawing.Size(249, 22);
             this.loadRecent.Text = "Charger une campagne récente...";
             // 
+            // noToolStripMenuItem
+            // 
+            this.noToolStripMenuItem.Name = "noToolStripMenuItem";
+            this.noToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noToolStripMenuItem.Text = "No";
+            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -151,8 +155,6 @@
             this.envoisToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addAdressFileButton,
             this.afficherLaListeDadresseToolStripMenuItem,
-            this.autonettoyageDesDoublonsToolStripMenuItem,
-            this.exporterLaListeDadressesToolStripMenuItem,
             this.toolStripMenuItem3,
             this.SMTPitem});
             this.envoisToolStripMenuItem.Enabled = false;
@@ -163,38 +165,26 @@
             // addAdressFileButton
             // 
             this.addAdressFileButton.Name = "addAdressFileButton";
-            this.addAdressFileButton.Size = new System.Drawing.Size(227, 22);
+            this.addAdressFileButton.Size = new System.Drawing.Size(223, 22);
             this.addAdressFileButton.Text = "Ajouter un fichier d\'adresses";
             this.addAdressFileButton.Click += new System.EventHandler(this.addAdressFileButton_Click);
             // 
             // afficherLaListeDadresseToolStripMenuItem
             // 
             this.afficherLaListeDadresseToolStripMenuItem.Name = "afficherLaListeDadresseToolStripMenuItem";
-            this.afficherLaListeDadresseToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.afficherLaListeDadresseToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.afficherLaListeDadresseToolStripMenuItem.Text = "Afficher la liste d\'adresses";
             this.afficherLaListeDadresseToolStripMenuItem.Click += new System.EventHandler(this.afficherLaListeDadresseToolStripMenuItem_Click);
-            // 
-            // autonettoyageDesDoublonsToolStripMenuItem
-            // 
-            this.autonettoyageDesDoublonsToolStripMenuItem.Name = "autonettoyageDesDoublonsToolStripMenuItem";
-            this.autonettoyageDesDoublonsToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.autonettoyageDesDoublonsToolStripMenuItem.Text = "Autonettoyage des doublons";
-            // 
-            // exporterLaListeDadressesToolStripMenuItem
-            // 
-            this.exporterLaListeDadressesToolStripMenuItem.Name = "exporterLaListeDadressesToolStripMenuItem";
-            this.exporterLaListeDadressesToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.exporterLaListeDadressesToolStripMenuItem.Text = "Exporter la liste d\'adresses";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(224, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(220, 6);
             // 
             // SMTPitem
             // 
             this.SMTPitem.Name = "SMTPitem";
-            this.SMTPitem.Size = new System.Drawing.Size(227, 22);
+            this.SMTPitem.Size = new System.Drawing.Size(223, 22);
             this.SMTPitem.Text = "Paramètres SMTP";
             this.SMTPitem.Click += new System.EventHandler(this.SMTPitem_Click);
             // 
@@ -299,12 +289,6 @@
             this.openAttachments.UseVisualStyleBackColor = true;
             this.openAttachments.Click += new System.EventHandler(this.openAttachments_Click);
             // 
-            // noToolStripMenuItem
-            // 
-            this.noToolStripMenuItem.Name = "noToolStripMenuItem";
-            this.noToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.noToolStripMenuItem.Text = "No";
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,8 +332,6 @@
         private System.Windows.Forms.ToolStripMenuItem SMTPitem;
         private System.Windows.Forms.ToolStripMenuItem addAdressFileButton;
         private System.Windows.Forms.ToolStripMenuItem afficherLaListeDadresseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem autonettoyageDesDoublonsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exporterLaListeDadressesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadRecent;
         private System.Windows.Forms.RichTextBox mailContent;
         private System.Windows.Forms.Button send;
